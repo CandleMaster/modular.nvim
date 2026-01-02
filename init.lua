@@ -105,5 +105,19 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
+local function set_diagnostic_underline_hl()
+  vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { underline = true, sp = '#ff5555' })
+  vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { underline = true, sp = '#f1fa8c' })
+  vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { underline = true, sp = '#8be9fd' })
+  vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { underline = true, sp = '#50fa7b' })
+end
+
+-- Apply now
+set_diagnostic_underline_hl()
+
+-- Reapply whenever the colorscheme changes
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = set_diagnostic_underline_hl,
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

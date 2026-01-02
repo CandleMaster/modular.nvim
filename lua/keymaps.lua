@@ -5,6 +5,22 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+vim.keymap.set('i', 'jj', '<Esc>')
+
+vim.keymap.set('n', '<leader>lg', function()
+  vim.cmd 'silent !tmux split-window -h lazygit'
+end, { desc = 'Open LazyGit in tmux split' })
+
+vim.keymap.set('n', '<leader>dc', function()
+  require('docker').compose_up_service()
+
+  -- wait a bit for containers to start
+  vim.defer_fn(function()
+    vim.cmd 'silent !$HOME/tmux-docker-logs.sh'
+  end, 6000)
+end, { desc = 'docker compose up (select service)' })
+
+--
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 

@@ -25,7 +25,15 @@ require('lazy').setup({
 
   require 'kickstart.plugins.gitsigns',
 
+  require 'kickstart.plugins.eslint',
+
+  require 'kickstart.plugins.catppuccin',
+
   require 'kickstart.plugins.which-key',
+
+  require 'kickstart.plugins.oil',
+
+  require 'kickstart.plugins.tmux',
 
   require 'kickstart.plugins.telescope',
 
@@ -35,7 +43,7 @@ require('lazy').setup({
 
   require 'kickstart.plugins.blink-cmp',
 
-  require 'kickstart.plugins.tokyonight',
+  -- require 'kickstart.plugins.tokyonight',
 
   require 'kickstart.plugins.todo-comments',
 
