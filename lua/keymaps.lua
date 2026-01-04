@@ -7,6 +7,23 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('i', 'jj', '<Esc>')
 
+vim.keymap.set('n', '<leader>cl', function()
+  local line = vim.api.nvim_get_current_line()
+
+  -- match: const foo =
+  local var = line:match '^%s*const%s+([%w_]+)%s*='
+
+  if not var then
+    var = ''
+    return
+  end
+
+  vim.api.nvim_put({
+    string.format("console.log('🔥 %s:', %s);", var, var),
+  }, 'l', true, true)
+  vim.cmd 'normal! F,'
+end, { desc = 'console.log with fire emoji' })
+
 vim.keymap.set('n', '<leader>lg', function()
   vim.cmd 'silent !tmux split-window -h lazygit'
 end, { desc = 'Open LazyGit in tmux split' })
