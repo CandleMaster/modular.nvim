@@ -7,6 +7,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('i', 'jj', '<Esc>')
 
+-- Toggle git diff highlight
+vim.keymap.set('n', '<leader>tg', function()
+  vim.cmd 'Gitsigns toggle_linehl'
+end, { desc = 'Toggle git diff highlight' })
+
+-- Typescript console log snipper
 vim.keymap.set('n', '<leader>cl', function()
   local line = vim.api.nvim_get_current_line()
 
@@ -37,7 +43,26 @@ vim.keymap.set('n', '<leader>dc', function()
   end, 6000)
 end, { desc = 'docker compose up (select service)' })
 
---
+-- Neocodeium
+vim.keymap.set('i', '<A-f>', function()
+  require('neocodeium').accept()
+end, { desc = 'Accept Neocodeium' })
+vim.keymap.set('i', '<A-w>', function()
+  require('neocodeium').accept_word()
+end, { desc = 'Accept Neocodeium word' })
+vim.keymap.set('i', '<A-a>', function()
+  require('neocodeium').accept_line()
+end, { desc = 'Accept Neocodeium line' })
+vim.keymap.set('i', '<A-e>', function()
+  require('neocodeium').cycle_or_complete()
+end, { desc = 'Cycle Neocodeium' })
+vim.keymap.set('i', '<A-r>', function()
+  require('neocodeium').cycle_or_complete(-1)
+end, { desc = 'Cycle Neocodeium backwards' })
+vim.keymap.set('i', '<A-c>', function()
+  require('neocodeium').clear()
+end, { desc = 'Clear Neocodeium' }) --
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 

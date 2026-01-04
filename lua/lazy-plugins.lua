@@ -27,6 +27,8 @@ require('lazy').setup({
 
   require 'kickstart.plugins.eslint',
 
+  require 'kickstart.plugins.neocodium',
+
   require 'kickstart.plugins.catppuccin',
 
   require 'kickstart.plugins.which-key',
