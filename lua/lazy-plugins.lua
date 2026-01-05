@@ -25,6 +25,8 @@ require('lazy').setup({
 
   require 'kickstart.plugins.gitsigns',
 
+  require 'kickstart.plugins.typescript-tools',
+
   require 'kickstart.plugins.eslint',
 
   require 'kickstart.plugins.neocodium',

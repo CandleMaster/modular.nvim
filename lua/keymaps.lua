@@ -12,6 +12,12 @@ vim.keymap.set('n', '<leader>tg', function()
   vim.cmd 'Gitsigns toggle_linehl'
 end, { desc = 'Toggle git diff highlight' })
 
+-- Toggle git diff highlight
+vim.keymap.set('n', '<leader>bd', function()
+  vim.cmd 'b# | bd#'
+  vim.cmd 'Oil'
+end, { desc = 'Close buffer and open directory' })
+
 -- Typescript console log snipper
 vim.keymap.set('n', '<leader>cl', function()
   local line = vim.api.nvim_get_current_line()
